@@ -44,7 +44,7 @@ def validate_data(values):
     Raises ValueError if strings cannot be converted into int,
      or if there aren't exactly 6 values
      """
-    print(values)
+   
     try:
         [int(value) for value in values]
         if len(values) != 6:
@@ -156,12 +156,23 @@ def main():
     sales_data = [int(num) for num in data]
     update_worksheet(sales_data, 'sales')
     new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
     update_worksheet(new_surplus_data, 'surplus')
     sales_columns = get_last_5_entries_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
 
-
-print('Welcome to Love  Sandwiches data automation')
 main()
+
+""" CHALLENGE THAT WORKS IN TERMINAL AND PASSED BUT NOT HERE FOR SOME REASON
+print('Welcome to Love  Sandwiches data automation')
+stock_data = main()
+
+def get_stock_values(data):
+
+    headings= SHEET.worksheet('stock').get_all_values()[0]
+    return {headings[i]: data[i] for i in range(len(headings))}
+
+stock_values = get_stock_values(stock_data)  
+
+get_stock_values(stock_data)
+"""
